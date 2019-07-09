@@ -1,10 +1,7 @@
-# Set the variable value in *.tfvars file
-# or using -var="do_token=..." CLI option
-# 1variable "do_token" {} # using env variable DIGITALOCEAN_TOKEN
-
 # Configure the DigitalOcean Provider
 provider "digitalocean" {
   # token = "${var.do_token}"
+  # using env variable DIGITALOCEAN_TOKEN
 }
 
 # Create a web server
