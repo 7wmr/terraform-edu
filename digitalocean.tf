@@ -68,7 +68,6 @@ resource "digitalocean_certificate" "cert" {
 resource "digitalocean_loadbalancer" "public" {
   name        = "secure-loadbalancer-1"
   region      = "lon1"
-  droplet_tag = "backend"
 
   forwarding_rule {
     entry_port      = 443
@@ -79,6 +78,8 @@ resource "digitalocean_loadbalancer" "public" {
 
     certificate_id  = "${digitalocean_certificate.cert.id}"
   }
+
+  droplet_ids = ["${digitalocean_droplet.dev01.id}"]
 }
 
 
