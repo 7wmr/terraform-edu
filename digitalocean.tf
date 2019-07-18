@@ -43,7 +43,7 @@ resource "digitalocean_droplet" "dev01" {
       "mkdir -p ~/repos && cd ~/repos",
       "ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts",
       "git clone git@github.com:7wmr/dotfiles.git && cd dotfiles/",
-#      "sh install-ubuntu.sh"
+      "sh install-ubuntu.sh"
     ]
 
     connection {
@@ -58,28 +58,28 @@ resource "digitalocean_droplet" "dev01" {
 
 }
 
-resource "digitalocean_certificate" "cert" {
-  name    = "dev01.8lr.co.uk.cert"
-  type    = "lets_encrypt"
-  domains = ["dev01.8lr.co.uk"]
-}
-
-# Create a new Load Balancer with TLS termination
-resource "digitalocean_loadbalancer" "public" {
-  name        = "secure-loadbalancer-1"
-  region      = "lon1"
-
-  forwarding_rule {
-    entry_port      = 443
-    entry_protocol  = "https"
-
-    target_port     = 80
-    target_protocol = "http"
-
-    certificate_id  = "${digitalocean_certificate.cert.id}"
-  }
-
-  droplet_ids = ["${digitalocean_droplet.dev01.id}"]
-}
+#resource "digitalocean_certificate" "cert" {
+#  name    = "dev01.8lr.co.uk.cert"
+#  type    = "lets_encrypt"
+#  domains = ["dev01.8lr.co.uk"]
+#}
+#
+## Create a new Load Balancer with TLS termination
+#resource "digitalocean_loadbalancer" "public" {
+#  name        = "secure-loadbalancer-1"
+#  region      = "lon1"
+#
+#  forwarding_rule {
+#    entry_port      = 443
+#    entry_protocol  = "https"
+#
+#    target_port     = 80
+#    target_protocol = "http"
+#
+#    certificate_id  = "${digitalocean_certificate.cert.id}"
+#  }
+#
+#  droplet_ids = ["${digitalocean_droplet.dev01.id}"]
+#}
 
 
