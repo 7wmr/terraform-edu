@@ -1,0 +1,12 @@
+session_name: terraform-edu
+windows:
+- focus: 'true'
+  layout: cda9,206x65,0,0[206x48,0,0,6,206x16,0,49,7]
+  options: {}
+  panes:
+  - shell_command: vim
+    focus: 'true'
+  - shell_command: 
+    - 
+  start_directory: ~/repos/terraform-edu
+  window_name: edu
