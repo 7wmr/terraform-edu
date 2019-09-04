@@ -1,5 +1,9 @@
 variable "web_port" { 
-  description = "The web server port"
-  default = 80
+  description = "The instance port"
+  default = 8080
 } 
 
+variable "elb_port" {
+  description = "The load balanacer port"
+  default = 80
+}
