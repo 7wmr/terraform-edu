@@ -16,11 +16,17 @@ terraform {
 resource "aws_security_group" "elb" { 
   name = "terraform-secgroup-elb" 
   ingress { 
-    from_port = "${var.elb_port}" 
-    to_port = "${var.elb_port}" 
-    protocol = "tcp" 
+    from_port   = "${var.elb_port}" 
+    to_port     = "${var.elb_port}" 
+    protocol    = "tcp" 
     cidr_blocks = [ "0.0.0.0/0" ] 
-  } 
+  }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
   lifecycle { 
     create_before_destroy = true 
   } 
@@ -59,7 +65,7 @@ resource "aws_route53_record" "web" {
 resource "aws_elb" "web" {
   name               = "terraform-elb-web"
   availability_zones = "${data.aws_availability_zones.available.names}"
-  security_groups = ["${aws_security_group.elb.id}"]
+  security_groups    = ["${aws_security_group.elb.id}"]
   
   access_logs {
     bucket        = "terraform-edu"
@@ -107,7 +113,7 @@ resource "aws_autoscaling_group" "web" {
   min_size                   = 2 
   max_size                   = 10
   health_check_type          = "ELB"
-  load_balancers             = ["${aws_elb.web.id}"]
+  load_balancers             = ["${aws_elb.web.name}"]
   tag { 
     key = "Name" 
     value = "terraform-asg-web" 
