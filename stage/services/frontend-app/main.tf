@@ -13,8 +13,8 @@ terraform {
   }
 }
 
-resource "aws_security_group" "web" { 
-  name = "terraform-secgroup-web" 
+resource "aws_security_group" "elbsg" { 
+  name = "terraform-secgroup-elb" 
   ingress { 
     from_port = "${var.elb_port}" 
     to_port = "${var.elb_port}" 
@@ -26,10 +26,23 @@ resource "aws_security_group" "web" {
   } 
 }
 
+resource "aws_security_group" "websg" { 
+  name = "terraform-secgroup-web" 
+  ingress { 
+    from_port = "${var.web_port}" 
+    to_port = "${var.web_port}" 
+    protocol = "tcp" 
+    cidr_blocks = [ "0.0.0.0/0" ] 
+  } 
+  lifecycle { 
+    create_before_destroy = true 
+  } 
+}
+
 resource "aws_elb" "web" {
   name               = "terraform-elb-web"
   availability_zones = "${data.aws_availability_zones.available.names}"
-  security_groups = ["${aws_security_group.web.id}"]
+  security_groups = ["${aws_security_group.elbsg.id}"]
   
   access_logs {
     bucket        = "terraform-edu"
@@ -97,7 +110,7 @@ data "template_file" "user_data" {
 resource "aws_launch_configuration" "web" { 
   image_id = "ami-077a5b1762a2dde35" 
   instance_type = "t2.micro" 
-#  security_groups = [ "${aws_security_group.web.id}" ] 
+  security_groups = [ "${aws_security_group.websg.id}" ] 
   user_data = "${data.template_file.user_data.rendered}" 
 
   lifecycle { 
