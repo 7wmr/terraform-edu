@@ -13,7 +13,7 @@ terraform {
   }
 }
 
-resource "aws_security_group" "elbsg" { 
+resource "aws_security_group" "elb" { 
   name = "terraform-secgroup-elb" 
   ingress { 
     from_port = "${var.elb_port}" 
@@ -26,7 +26,7 @@ resource "aws_security_group" "elbsg" {
   } 
 }
 
-resource "aws_security_group" "websg" { 
+resource "aws_security_group" "web" { 
   name = "terraform-secgroup-web" 
   ingress { 
     from_port = "${var.web_port}" 
@@ -39,10 +39,27 @@ resource "aws_security_group" "websg" {
   } 
 }
 
+data "aws_route53_zone" "primary" {
+  name         = "8lr.co.uk."
+  private_zone = false
+}
+
+resource "aws_route53_record" "web" {
+  zone_id = "${data.aws_route53_zone.primary.zone_id}"
+  name    = "edu.8lr.co.uk"
+  type    = "A"
+  alias {
+    name                   = "${aws_elb.web.dns_name}"
+    zone_id                = "${aws_elb.web.zone_id}"
+    evaluate_target_health = true
+  }
+}
+
+
 resource "aws_elb" "web" {
   name               = "terraform-elb-web"
   availability_zones = "${data.aws_availability_zones.available.names}"
-  security_groups = ["${aws_security_group.elbsg.id}"]
+  security_groups = ["${aws_security_group.elb.id}"]
   
   access_logs {
     bucket        = "terraform-edu"
@@ -110,7 +127,7 @@ data "template_file" "user_data" {
 resource "aws_launch_configuration" "web" { 
   image_id = "ami-077a5b1762a2dde35" 
   instance_type = "t2.micro" 
-  security_groups = [ "${aws_security_group.websg.id}" ] 
+  security_groups = [ "${aws_security_group.web.id}" ] 
   user_data = "${data.template_file.user_data.rendered}" 
 
   lifecycle { 
