@@ -1,6 +1,6 @@
 #!/bin/bash 
-echo "Hello, World" > index.html 
-nohup busybox httpd -f -p "${web_port}" & 
+echo "Hostname: `hostname`" > index.html 
+nohup busybox httpd -f -p "${server_port}" & 
 EOF
 
 

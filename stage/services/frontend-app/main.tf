@@ -35,8 +35,8 @@ resource "aws_security_group" "elb" {
 resource "aws_security_group" "web" { 
   name = "terraform-secgroup-web" 
   ingress { 
-    from_port = "${var.web_port}" 
-    to_port = "${var.web_port}" 
+    from_port = "${var.server_port}" 
+    to_port = "${var.server_port}" 
     protocol = "tcp" 
     cidr_blocks = [ "0.0.0.0/0" ] 
   } 
@@ -46,13 +46,13 @@ resource "aws_security_group" "web" {
 }
 
 data "aws_route53_zone" "primary" {
-  name         = "8lr.co.uk."
+  name         = "${var.elb_domain}."
   private_zone = false
 }
 
 resource "aws_route53_record" "web" {
   zone_id = "${data.aws_route53_zone.primary.zone_id}"
-  name    = "edu.8lr.co.uk"
+  name    = "${var.elb_record}.${var.elb_domain}"
   type    = "A"
   alias {
     name                   = "${aws_elb.web.dns_name}"
@@ -75,7 +75,7 @@ resource "aws_elb" "web" {
   }
 
   listener {
-    instance_port     = "${var.web_port}"
+    instance_port     = "${var.server_port}"
     instance_protocol = "http"
     lb_port           = "${var.elb_port}"
     lb_protocol       = "http"
@@ -85,7 +85,7 @@ resource "aws_elb" "web" {
     healthy_threshold   = 2
     unhealthy_threshold = 2
     timeout             = 3
-    target              = "HTTP:${var.web_port}/"
+    target              = "HTTP:${var.server_port}/"
     interval            = 30
   }
 
@@ -127,7 +127,7 @@ resource "aws_autoscaling_group" "web" {
 data "template_file" "user_data" { 
   template = "${file("user-data.sh")}" 
   vars = { 
-    web_port = "${var.web_port}" 
+    server_port = "${var.server_port}"
   } 
 }
 
