@@ -3,7 +3,6 @@ provider "aws" {
   region     = "eu-west-2"
 }
 
-
 terraform {
   backend "s3" {
     bucket  = "terraform-edu"
@@ -61,15 +60,14 @@ resource "aws_route53_record" "web" {
   }
 }
 
-
 resource "aws_elb" "web" {
   name               = "terraform-elb-web"
   availability_zones = "${data.aws_availability_zones.available.names}"
   security_groups    = ["${aws_security_group.elb.id}"]
-  
+ 
   access_logs {
     bucket        = "terraform-edu"
-    bucket_prefix = "logs/frontend-app"
+    bucket_prefix = "access-logs"
     interval      = 60
     enabled       = false
   }
