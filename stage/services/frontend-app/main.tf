@@ -115,7 +115,7 @@ resource "aws_autoscaling_group" "web" {
   load_balancers             = ["${aws_elb.web.name}"]
   tag { 
     key = "Name" 
-    value = "web-instance" 
+    value = "terraform-edu-web" 
     propagate_at_launch = true 
   }
   lifecycle {
