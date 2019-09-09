@@ -22,4 +22,15 @@ variable "elb_record" {
   default     = "edu"
 }
 
+variable "min_instance_count" {
+  type        = number
+  description = "Min instances provisioned by ASG"
+  default     = "2"
+}
+
+variable "max_instance_count" {
+  type        = number
+  description = "Max instances provisioned by ASG"
+  default     = "10"
+}
 

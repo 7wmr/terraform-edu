@@ -108,13 +108,14 @@ data "aws_availability_zones" "available" {
 resource "aws_autoscaling_group" "web" {
   launch_configuration       = "${aws_launch_configuration.web.id}"
   availability_zones         = "${data.aws_availability_zones.available.names}"
-  min_size                   = 2 
-  max_size                   = 10
+  min_size                   = "${var.min_instance_count}"
+  max_size                   = "${var.max_instance_count}"
+  min_elb_capacity           = "${var.min_instance_count}"
   health_check_type          = "ELB"
   load_balancers             = ["${aws_elb.web.name}"]
   tag { 
     key = "Name" 
-    value = "terraform-asg-web" 
+    value = "web-instance" 
     propagate_at_launch = true 
   }
   lifecycle {
