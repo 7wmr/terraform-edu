@@ -16,12 +16,6 @@ variable "elb_domain" {
   default     = "8lr.co.uk"
 }
 
-variable "elb_record" {
-  type        = string
-  description = "The record to be applied to domain"
-  default     = "edu"
-}
-
 variable "min_instance_count" {
   type        = number
   description = "Min instances provisioned by ASG"

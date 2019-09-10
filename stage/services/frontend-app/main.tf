@@ -19,7 +19,6 @@ module "terraform-module-edu" {
 
   elb_port            = var.elb_port
   elb_domain          = var.elb_domain
-  elb_record          = var.elb_record
 
   min_instance_count  = var.min_instance_count
   max_instance_count  = var.max_instance_count
