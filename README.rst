@@ -1,6 +1,7 @@
 Terraform Edu
 ======================
 
+
 .. image:: https://circleci.com/gh/7wmr/terraform-edu.svg?style=shield
     :target: https://circleci.com/gh/7wmr/terraform-edu
 
