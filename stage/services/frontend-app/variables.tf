@@ -1,3 +1,9 @@
+variable "cluster_name" {
+  type        = string
+  description = "The name of the cluster"
+  default     = "edu-cluster"
+}
+
 variable "server_port" {
   type        = number
   description = "The instance port"

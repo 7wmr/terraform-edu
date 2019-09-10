@@ -23,6 +23,6 @@ module "terraform-module-edu" {
   min_instance_count  = var.min_instance_count
   max_instance_count  = var.max_instance_count
   
-  cluster_name        = "edu-cluster"
+  cluster_name        = var.cluster_name
 }
 
