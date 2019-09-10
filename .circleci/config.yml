@@ -21,3 +21,5 @@ jobs:
       - run: 
           name: Run Terraform Plan
           command: terraform plan
+    working_directory: stage/services/frontend-app/
+
