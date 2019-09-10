@@ -13,7 +13,7 @@ terraform {
 }
 
 module "terraform-module-edu" {
-  source = "git@github.com:7wmr/terraform-module-edu.git"
+  source = "git@github.com:7wmr/terraform-module-edu.git?ref=master"
     
   server_port         = var.server_port
 
