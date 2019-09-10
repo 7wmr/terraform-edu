@@ -16,14 +16,12 @@ jobs:
     steps:
       - checkout
       - run:
-          name: testing
-          command: ls -la
-          working_directory: ~/project/stage/services/frontend-app/
-      - run:
           name: Install Modules and Plugins
           command: terraform init -upgrade
           working_directory: ~/project/stage/services/frontend-app/
       - run: 
           name: Run Terraform Plan
           command: terraform plan
+          working_directory: ~/project/stage/services/frontend-app/
+
 
