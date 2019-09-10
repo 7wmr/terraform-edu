@@ -11,6 +11,7 @@ Download latest modules and plugins.
 
    terraform init -upgrade
 
+
 Check that the configuration will apply the expected changes.
 
 .. code:: bash
