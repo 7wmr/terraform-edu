@@ -16,6 +16,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: testing
+          command: ls -la
+      - run:
           name: Install Modules and Plugins
           command: terraform init -upgrade
       - run: 
