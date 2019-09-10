@@ -27,3 +27,13 @@ Apply the new configuration.
 .. code:: bash
 
    terraform apply
+
+
+Termination
+-----------------------
+
+To destroy the cluster when finished.
+
+.. code:: bash
+
+   terraform destroy -auto-approve -force
