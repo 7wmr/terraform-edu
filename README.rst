@@ -3,8 +3,11 @@ Terraform Edu
 
 
 .. image:: https://circleci.com/gh/7wmr/terraform-edu.svg?style=shield
-    :target: https://circleci.com/gh/7wmr/terraform-edu
+    :target: https://circleci.com/gh/7wmr/terraform-edu  
 
+
+Deployment
+-----------------------
 
 Download latest modules and plugins.
 
