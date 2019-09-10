@@ -22,6 +22,7 @@ jobs:
       - run:
           name: Install Modules and Plugins
           command: terraform init -upgrade
+          working_directory: ~/project/stage/services/frontend-app/
       - run: 
           name: Run Terraform Plan
           command: terraform plan
