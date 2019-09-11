@@ -1,6 +1,6 @@
 provider "aws" {
   profile    = "default"
-  region     = "eu-west-2"
+  region     = var.aws_region
 }
 
 terraform {
@@ -15,6 +15,8 @@ terraform {
 module "terraform-module-edu" {
   source = "git@github.com:7wmr/terraform-module-edu.git?ref=master"
     
+  aws_region          = var.aws_region
+
   server_port         = var.server_port
 
   elb_port            = var.elb_port
