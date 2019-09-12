@@ -16,27 +16,21 @@ variable "server_port" {
   default     = 8080
 } 
 
-variable "elb_port" {
-  type        = number
-  description = "The load balanacer port"
-  default     = 80
+variable "elb" {
+  type        = any
+  description = "Load balancer configuration"
+  default     = {
+    port      = 80
+    domain    = "8lr.co.uk"
+  }
 }
 
-variable "elb_domain" {
-  type        = string
-  description = "The domain for the load balancer"
-  default     = "8lr.co.uk"
-}
-
-variable "min_instance_count" {
-  type        = number
-  description = "Min instances provisioned by ASG"
-  default     = "2"
-}
-
-variable "max_instance_count" {
-  type        = number
-  description = "Max instances provisioned by ASG"
-  default     = "10"
+variable "asg" {
+  type         = any
+  description  = "Auto scaling group configuration"
+  default      = {
+    min_size   = 2
+    max_size   = 10
+  }
 }
 

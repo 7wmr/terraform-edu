@@ -1,3 +1,3 @@
 output "custom-elb-dns" {
-  value = "${var.cluster_name}.${var.elb_domain}"
+  value = "${var.cluster_name}.${var.elb.domain}"
 }

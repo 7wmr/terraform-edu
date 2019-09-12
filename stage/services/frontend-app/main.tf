@@ -19,11 +19,8 @@ module "terraform-module-edu" {
 
   server_port         = var.server_port
 
-  elb_port            = var.elb_port
-  elb_domain          = var.elb_domain
-
-  min_instance_count  = var.min_instance_count
-  max_instance_count  = var.max_instance_count
+  elb                 = var.elb
+  asg                 = var.asg
   
   cluster_name        = var.cluster_name
 }
