@@ -33,7 +33,7 @@ View user-data output for an instance.
 
 .. code:: bash
 
-  echo $(aws ec2 get-console-output --instance-id "${INSTANCE_ID}")
+  echo $(aws ec2 get-console-output --instance-id "${INSTANCE_ID}" | jq ".Output")
 
 
 Termination
