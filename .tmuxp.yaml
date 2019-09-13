@@ -1,7 +1,7 @@
 session_name: terraform-edu
 windows:
 - focus: 'true'
-  layout: 166e,318x79,0,0{159x79,0,0[159x48,0,0,0,159x30,0,49,2],158x79,160,0[158x65,160,0,1,158x13,160,66,3]}
+  layout: 8b1d,238x58,0,0{119x58,0,0[119x42,0,0,1,119x15,0,43,2],118x58,120,0[118x42,120,0,3,118x15,120,43,4]}
   options: {}
   start_directory: ~/repos/terraform-edu/
   panes:
@@ -18,4 +18,16 @@ windows:
   - shell_command:
     - cd ../terraform-module-edu
     - clear
-  window_name: edu
+  window_name: terraform
+- window_name: mockapp
+  layout: 2f8b,238x58,0,0{119x58,0,0,5,118x58,120,0[118x42,120,0,6,118x15,120,43,7]}
+  start_directory: ~/repos/terraform-mockapp-edu/
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command:
+    - vim
+  - shell_command:
+    - clear
+  - shell_command:
+    - clear

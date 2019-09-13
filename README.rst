@@ -29,6 +29,15 @@ Apply the new configuration.
    terraform apply
 
 
+View user-data output for an instance.
+
+.. code:: bash
+
+   aws ec2 describe-instance-attribute --instance-id "${INSTANCE_ID}" \
+     --attribute userData --output text --query "UserData.Value" \
+     | base64 --decode
+
+
 Termination
 -----------------------
 
