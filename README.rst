@@ -33,9 +33,7 @@ View user-data output for an instance.
 
 .. code:: bash
 
-   aws ec2 describe-instance-attribute --instance-id "${INSTANCE_ID}" \
-     --attribute userData --output text --query "UserData.Value" \
-     | base64 --decode
+  echo $(aws ec2 get-console-output --instance-id "${INSTANCE_ID}")
 
 
 Termination
