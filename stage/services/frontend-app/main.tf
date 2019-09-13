@@ -16,6 +16,7 @@ module "terraform-module-edu" {
   source = "git@github.com:7wmr/terraform-module-edu.git?ref=master"
     
   aws_region          = var.aws_region
+  key_name            = var.key_name
 
   server_port         = var.server_port
 

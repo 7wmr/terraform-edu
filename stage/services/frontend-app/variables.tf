@@ -4,6 +4,12 @@ variable "aws_region" {
   default     = "eu-west-2"
 }
 
+variable "key_name" {
+  type        = string
+  description = "SSH key name"
+  default     = "home-macbook"
+}
+
 variable "cluster_name" {
   type        = string
   description = "The name of the cluster"
