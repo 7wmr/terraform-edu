@@ -18,7 +18,8 @@ module "terraform-module-edu" {
   aws_region          = var.aws_region
   key_name            = var.key_name
 
-  server_port         = var.server_port
+  app_port            = var.app_port
+  app_version         = var.app_version
 
   elb                 = var.elb
   asg                 = var.asg

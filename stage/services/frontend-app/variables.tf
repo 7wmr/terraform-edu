@@ -16,9 +16,15 @@ variable "cluster_name" {
   default     = "edu-cluster"
 }
 
-variable "server_port" {
+variable "app_version" {
+  type        = string
+  description = "The application version number e.g. v1.0.0"
+  default     = "v1.2.0"
+}
+
+variable "app_port" {
   type        = number
-  description = "The instance port"
+  description = "The application web port"
   default     = 8080
 } 
 
