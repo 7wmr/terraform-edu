@@ -12,8 +12,8 @@ terraform {
   }
 }
 
-module "terraform-module-edu" {
-  source = "git@github.com:7wmr/terraform-module-edu.git?ref=master"
+module "services-web" {
+  source = "git@github.com:7wmr/terraform-module-edu.git//services/web?ref=master"
     
   aws_region          = var.aws_region
   key_name            = var.key_name
