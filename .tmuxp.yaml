@@ -9,7 +9,7 @@ windows:
     shell_command:
     - vim
   - shell_command:
-    - cd stage/services/frontend-app/
+    - cd stage/services/web/
     - clear
   - shell_command:
     - cd ../terraform-module-edu/
