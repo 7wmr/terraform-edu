@@ -43,6 +43,12 @@ View system log output for an instance.
 
   echo $(aws ec2 get-console-output --instance-id "${INSTANCE_ID}" | jq ".Output")
 
+To get a system log screenshot for an instance.
+
+.. code:: bash
+
+  echo $(aws ec2 get-console-screenshot --instance-id "${INSTANCE_ID}" | jq ".Output")
+
 
 Termination
 -----------------------
