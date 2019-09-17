@@ -15,7 +15,7 @@ jobs:
         command: |
           terraform plan -out services-web.plan
         working_directory: ~/project/stage/services/web/
-      - store_artifacts:
+    - store_artifacts:
         path: ./services-web.plan
 
 
