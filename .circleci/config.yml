@@ -3,30 +3,28 @@ jobs:
   test-services-web:
     docker:
       - image: hashicorp/terraform
+    working_directory: ~/project/stage/services/web/
     steps:
       - checkout
       - run:
           name: Install modules and plugins
           command: terraform init -upgrade
-          working_directory: ~/project/stage/services/web/
       - run: 
           name: Run terraform plan
           command: terraform plan
-          working_directory: ~/project/stage/services/web/
 
   test-databases-mysql:
     docker:
       - image: hashicorp/terraform
+    working_directory: ~/project/stage/databases/mysql/
     steps:
       - checkout
       - run:
           name: Install modules and plugins
           command: terraform init -upgrade
-          working_directory: ~/project/stage/databases/mysql/
       - run: 
           name: Run terraform plan
           command: terraform plan
-          working_directory: ~/project/stage/databases/mysql/
 
 workflows:
   version: 2
@@ -35,8 +33,8 @@ workflows:
       - test-services-web:
           filters:
             branches:
-              - master
+              only: master
       - test-databases-mysql:
           filters:
             branches:
-              - master
+              only: master
