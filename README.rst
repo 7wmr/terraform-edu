@@ -33,6 +33,13 @@ View user-data output for an instance.
 
 .. code:: bash
 
+  tail -f /var/log/cloud-init*.log
+
+
+View system log output for an instance.
+
+.. code:: bash
+
   echo $(aws ec2 get-console-output --instance-id "${INSTANCE_ID}" | jq ".Output")
 
 
