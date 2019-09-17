@@ -1,5 +1,4 @@
 version: 2
-
 jobs:
   test-services-web:
     docker:
@@ -31,7 +30,7 @@ jobs:
 
 workflows:
   version: 2
-  test:
+  init-and-plan:
     jobs:
       - test-services-web:
           filters:
