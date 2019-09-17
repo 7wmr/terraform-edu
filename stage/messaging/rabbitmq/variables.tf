@@ -21,7 +21,7 @@ variable "rabbitmq" {
   description  = "RabbitMQ arguments"
   default      = {
     username   = "admin"
-    password   = "admin"
+    password   = "Pa$$w0rd"
   }
 }
 

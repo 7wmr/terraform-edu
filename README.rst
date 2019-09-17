@@ -29,11 +29,12 @@ Apply the new configuration.
    terraform apply
 
 
-View user-data output for an instance.
+Add to the start of any ``user-data.sh`` template script file to ensure that output is forwarded to console log.
 
 .. code:: bash
 
-  tail -f /var/log/cloud-init*.log
+  #!/bin/bash -xe
+  exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1
 
 
 View system log output for an instance.
