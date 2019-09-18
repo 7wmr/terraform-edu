@@ -4,16 +4,22 @@ variable "key_name" {
   default     = "ipsoft-macbook"
 }
 
-variable "cluster_name" {
+variable "rabbitmq_name" {
   type        = string
-  description = "Name of cluster to be created."
-  default     = "edu-cluster"  
+  description = "Name of rabbitmq instance to be created."
+  default     = "edu-rabbitmq"  
 }
 
 variable "aws_region" {
   type        = string
   description = "AWS region to be used"
   default     = "eu-west-2"
+}
+
+variable "domain_name" {
+  type        = string
+  description = "Domain name to be used."
+  default     = "8lr.co.uk"
 }
 
 variable "rabbitmq" {

@@ -15,11 +15,12 @@ terraform {
 module "messaging_rabbitmq" {
   source = "git@github.com:7wmr/terraform-module-edu.git//messaging/rabbitmq?ref=master"
     
-  aws_region   = var.aws_region
+  aws_region    = var.aws_region
 
-  rabbitmq     = var.rabbitmq
+  rabbitmq      = var.rabbitmq
  
-  key_name     = var.key_name
-  cluster_name = var.cluster_name
+  key_name      = var.key_name
+  rabbitmq_name = var.rabbitmq_name
+  domain_name   = var.domain_name
 }
 
