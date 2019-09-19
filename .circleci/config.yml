@@ -10,6 +10,11 @@ jobs:
           command: |
             terraform init -upgrade
           working_directory: ~/project/dev/
+      - run:
+          name: Run terraform validate
+          command: |
+            terraform validate
+          working_directory: ~/project/dev/
       - run: 
           name: Run terraform plan
           command: |
