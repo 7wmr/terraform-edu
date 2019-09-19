@@ -14,7 +14,7 @@ variable "web_app" {
   type        = any 
   description = "Web application configuration"
   default     = {
-    release   = "v1.2.0"
+    release   = "v1.3.0"
     name      = "web-dev"
     port      = 8080
   }
@@ -35,6 +35,7 @@ variable "web_asg" {
   default      = {
     min_size   = 2
     max_size   = 10
+    enabled    = false
   }
 }
 

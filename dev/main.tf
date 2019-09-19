@@ -29,10 +29,13 @@ module "dbs_mysql" {
 module "svc_web" {
   source   = "git@github.com:7wmr/terraform-module-edu.git//svc/web?ref=master"
 
-  key_name = var.key_name
+  key_name             = var.key_name
 
-  app      = var.web_app
-  elb      = var.web_elb
-  asg      = var.web_asg
+  rabbitmq_endpoint    = "${module.msg_rabbitmq.endpoint}"
+  rabbitmq_credentials = "${var.rabbitmq.username}:${var.rabbitmq.password}"
+
+  app                  = var.web_app
+  elb                  = var.web_elb
+  asg                  = var.web_asg
 }
 
