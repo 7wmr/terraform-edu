@@ -15,9 +15,9 @@ terraform {
 module "msg_rabbitmq" {
   source   = "git@github.com:7wmr/terraform-module-edu.git//msg/rabbitmq?ref=master"
     
-  key_name = var.key_name
-
-  msg      = var.rabbitmq
+  key_name    = var.key_name
+  ssh_enabled = false
+  msg         = var.rabbitmq
 }
 
 module "dbs_mysql" {
