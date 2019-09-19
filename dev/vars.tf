@@ -14,7 +14,7 @@ variable "web_app" {
   type        = any 
   description = "Web application configuration"
   default     = {
-    release   = "v1.3.0"
+    release   = "v1.4.0"
     name      = "web-dev"
     port      = 8080
   }
