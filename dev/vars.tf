@@ -52,7 +52,7 @@ variable "mysql" {
   type        = any
   description = "MySQL database arguments"
   default     = {
-    name      = "dbsdev"
+    name      = "dbs-dev"
     username  = "admin"
     password  = "Pa$$w0rd"
     port      = 3306
