@@ -17,6 +17,7 @@ module "msg_rabbitmq" {
     
   key_name    = var.key_name
   ssh_enabled = false
+
   msg         = var.rabbitmq
 }
 
@@ -30,6 +31,7 @@ module "svc_web" {
   source   = "git@github.com:7wmr/terraform-module-edu.git//svc/web?ref=master"
 
   key_name             = var.key_name
+  ssh_enabled          = false
 
   rabbitmq_endpoint    = "${module.msg_rabbitmq.endpoint}"
   rabbitmq_credentials = "${var.rabbitmq.username}:${var.rabbitmq.password}"
@@ -37,6 +39,18 @@ module "svc_web" {
   app                  = var.web_app
   elb                  = var.web_elb
   asg                  = var.web_asg
+}
+
+module "svc_run" {
+  source   = "git@github.com:7wmr/terraform-module-edu.git//svc/run?ref=master"
+
+  key_name             = var.key_name
+  ssh_enabled          = true
+
+  rabbitmq_endpoint    = "${module.msg_rabbitmq.endpoint}"
+  rabbitmq_credentials = "${var.rabbitmq.username}:${var.rabbitmq.password}"
+
+  app                  = var.run_app
 }
 
 

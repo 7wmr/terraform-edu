@@ -39,6 +39,15 @@ variable "web_asg" {
   }
 }
 
+variable "run_app" {
+  type        = any 
+  description = "Run application configuration"
+  default     = {
+    release   = "v1.0.1"
+    name      = "run-dev"
+  }
+}
+
 variable "mysql" {
   type        = any
   description = "MySQL database arguments"
