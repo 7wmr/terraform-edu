@@ -48,7 +48,10 @@ module "svc_run" {
   ssh_enabled          = true
 
   rabbitmq_endpoint    = "${module.msg_rabbitmq.endpoint}"
-  rabbitmq_credentials = "${var.rabbitmq.username}:${var.rabbitmq.password}"
+  rabbitmq_credentials = "${module.msg_rabbitmq.svc_username}:${module.msg_rabbitmq.svc_password}"
+
+  mysql_endpoint       = "${module.dbs_mysql.endpoint}"
+  mysql_credentials    = "${var.mysql.username}:${var.mysql.password}"
 
   app                  = var.run_app
 }

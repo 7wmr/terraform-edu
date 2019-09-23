@@ -43,7 +43,7 @@ variable "run_app" {
   type        = any 
   description = "Run application configuration"
   default     = {
-    release   = "v1.0.1"
+    release   = "v1.1.1"
     name      = "run-dev"
   }
 }
