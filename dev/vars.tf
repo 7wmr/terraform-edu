@@ -24,7 +24,7 @@ variable "web_elb" {
   type        = any
   description = "Web load balancer configuration"
   default     = {
-    port      = 80
+    port      = 443
     domain    = "8lr.co.uk"
   }
 }
