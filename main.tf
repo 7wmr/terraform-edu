@@ -13,7 +13,8 @@ terraform {
 }
 
 module "msg_rabbitmq" {
-  source   = "git@github.com:7wmr/terraform-module-edu.git//msg/rabbitmq?ref=master"
+  source      = "git@github.com:7wmr/terraform-module-edu.git//msg/rabbitmq?ref=master"
+  environment = "${terraform.workspace}"
     
   key_name    = var.key_name
   ssh_enabled = false
@@ -22,13 +23,15 @@ module "msg_rabbitmq" {
 }
 
 module "dbs_mysql" {
-  source = "git@github.com:7wmr/terraform-module-edu.git//dbs/mysql?ref=master"
+  source      = "git@github.com:7wmr/terraform-module-edu.git//dbs/mysql?ref=master"
+  environment = "${terraform.workspace}"
 
-  dbs    = var.mysql
+  dbs         = var.mysql
 }
 
 module "svc_web" {
-  source   = "git@github.com:7wmr/terraform-module-edu.git//svc/web?ref=master"
+  source               = "git@github.com:7wmr/terraform-module-edu.git//svc/web?ref=master"  
+  environment          = "${terraform.workspace}"
 
   key_name             = var.key_name
   ssh_enabled          = false
@@ -42,7 +45,8 @@ module "svc_web" {
 }
 
 module "svc_run" {
-  source   = "git@github.com:7wmr/terraform-module-edu.git//svc/run?ref=master"
+  source               = "git@github.com:7wmr/terraform-module-edu.git//svc/run?ref=master"
+  environment          = "${terraform.workspace}"
 
   key_name             = var.key_name
   ssh_enabled          = true

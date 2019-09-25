@@ -15,7 +15,7 @@ variable "web_app" {
   description = "Web application configuration"
   default     = {
     release   = "v1.4.0"
-    name      = "web-dev"
+    name      = "web"
     port      = 8080
   }
 }
@@ -44,7 +44,7 @@ variable "run_app" {
   description = "Run application configuration"
   default     = {
     release   = "v1.1.1"
-    name      = "run-dev"
+    name      = "run"
   }
 }
 
@@ -52,7 +52,7 @@ variable "mysql" {
   type        = any
   description = "MySQL database arguments"
   default     = {
-    name      = "dbs-dev"
+    name      = "dbs"
     username  = "admin"
     password  = "Pa$$w0rd"
     port      = 3306
@@ -63,7 +63,7 @@ variable "rabbitmq" {
   type         = any
   description  = "RabbitMQ configuration"
   default      = {
-    name       = "msg-dev"
+    name       = "msg"
     username   = "admin"
     password   = "Pa$$w0rd"
     domain     = "8lr.co.uk"

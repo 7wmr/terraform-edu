@@ -26,7 +26,7 @@ Apply the new configuration.
 
 .. code:: bash
 
-   terraform apply
+  terraform apply -var-file=vars/$(terraform workspace show).tfvars
 
 
 Add to the start of any ``user-data.sh`` template script file to ensure that output is forwarded to console log.
