@@ -9,19 +9,19 @@ jobs:
           name: Install modules and plugins
           command: |
             terraform init -upgrade
-          working_directory: ~/project/dev/
+          working_directory: ~/project/
       - run:
           name: Run terraform validate
           command: |
             terraform validate
-          working_directory: ~/project/dev/
+          working_directory: ~/project/
       - run: 
           name: Run terraform plan
           command: |
-            terraform plan -out /tmp/dev.plan
-          working_directory: ~/project/dev/
+            terraform plan -out /tmp/default.plan 
+          working_directory: ~/project/
       - store_artifacts:
-          path: /tmp/dev.plan
+          path: /tmp/default.plan
 
 workflows:
   version: 2
