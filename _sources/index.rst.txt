@@ -1,5 +1,5 @@
 
-Welcome to Terraform Edu documentation!
+Terraform Edu documentation!
 ==============================================
 
 .. toctree::
@@ -23,6 +23,4 @@ Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
-
