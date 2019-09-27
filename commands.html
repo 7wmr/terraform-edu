@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -9,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; Terraform-Edu  documentation</title>
+  <title>Commands &mdash; Terraform-Edu  documentation</title>
   
 
   
@@ -38,8 +37,10 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="_static/style.css" type="text/css" />
-    <link rel="index" title="Index" href="#" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Instance" href="aws/instance.html" />
+    <link rel="prev" title="Install" href="install.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -84,9 +85,9 @@
             
             
               <p class="caption"><span class="caption-text">Terraform:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="terraform/install.html">Install</a></li>
-<li class="toctree-l1"><a class="reference internal" href="terraform/commands.html">Commands</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Commands</a></li>
 </ul>
 <p class="caption"><span class="caption-text">AWS:</span></p>
 <ul>
@@ -136,12 +137,14 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Index</li>
+      <li>Commands</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/commands.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -153,11 +156,30 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
+  <div class="section" id="commands">
+<h1>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h1>
+<p>Download the latest modules and plugins.</p>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">terraform</span> <span class="n">init</span> <span class="o">-</span><span class="n">upgrade</span>
+</pre></div>
+</div>
+<p>Check that the configuration will apply the expected changes.</p>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">terraform</span> <span class="n">plan</span>
+</pre></div>
+</div>
+<p>Apply the new configuration.</p>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>terraform apply -var-file=vars/${terraform workspace show}.tfvars
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Use the following alias command to all the use of the <code class="docutils literal notranslate"><span class="pre">tf</span></code> command shortname rather than <code class="docutils literal notranslate"><span class="pre">terraform</span></code> command.</p>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alias</span> <span class="n">tf</span><span class="o">=</span><span class="s1">&#39;terraform&#39;</span>
+</pre></div>
+</div>
+<div class="code bash last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tf</span> <span class="n">init</span> <span class="o">-</span><span class="n">upgrade</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -165,6 +187,15 @@
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="aws/instance.html" class="btn btn-neutral float-right" title="Instance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="install.html" class="btn btn-neutral float-left" title="Install" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
