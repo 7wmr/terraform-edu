@@ -6,10 +6,18 @@ Welcome to Terraform Edu documentation!
    :maxdepth: 2
    :caption: Setup:
 
-   setup.rst
+   install.rst
+
+.. toctree::
+   :maxdepth: 2
+   :caption: AWS:
 
 
+.. toctree::
+   :maxdepth: 2
+   :caption: GCC:
 
+  
 
 Indices and tables
 ==================
