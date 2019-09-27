@@ -52,22 +52,6 @@ To get a system log screenshot for an instance.
   echo $(aws ec2 get-console-screenshot --instance-id "${INSTANCE_ID}" | jq ".Output")
 
 
-
-Certificates
------------------------
-
-https://medium.com/@francisyzy/create-aws-elb-with-self-signed-ssl-cert-cd1c352331f
-
-.. code:: bash
-   
-   DOMAIN_NAME='web-dev.8lr.co.uk'
-   openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout "${DOMAIN_NAME}.key" -out "${DOMAIN_NAME}.crt"
-   openssl rsa -in "${DOMAIN_NAME}.key" -text > "${DOMAIN_NAME}.pem"
-   openssl x509 -inform PEM -in "${DOMAIN_NAME}.crt" > "${DOMAIN_NAME}.pem"
-
-
-
-
 Termination
 -----------------------
 
