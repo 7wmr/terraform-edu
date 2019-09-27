@@ -10,7 +10,7 @@ BUILDDIR      = docs/_build
 # Put it first so that "make" without argument is like "make html".
 html:
 	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
-	@cp -R $(BUILDDIR)/html/ ./docs/_
+	@cp -R $(BUILDDIR)/html/ ./docs/gh-pages
 
 .PHONY: help Makefile
 
