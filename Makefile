@@ -14,6 +14,11 @@ html:
 	@touch ./docs/gh-pages/.nojekyll
 	@echo "terraform-edu.7wmr.uk" > ./docs/gh-pages/CNAME
 
+# This will push the docs/gh-pages folder to the gh-pages branch
+gh-pages:
+	@git subtree push --prefix docs/gh-pages origin gh-pages
+
+
 .PHONY: help Makefile
 
 # Catch-all target: route all unknown targets to Sphinx using the new
