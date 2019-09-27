@@ -5,6 +5,8 @@ Terraform Edu
     :target: https://circleci.com/gh/7wmr/terraform-edu
 
 
+See documentation at: http://terraform-edu.7wmr.uk
+
 Deployment
 -----------------------
 
