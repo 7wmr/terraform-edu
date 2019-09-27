@@ -166,32 +166,33 @@
 <div class="section" id="deployment">
 <h2>Deployment<a class="headerlink" href="#deployment" title="Permalink to this headline">¶</a></h2>
 <p>Download the latest modules and plugins.</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">terraform</span> <span class="n">init</span> <span class="o">-</span><span class="n">upgrade</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>terraform init -upgrade
 </pre></div>
 </div>
 <p>Check that the configuration will apply the expected changes.</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">terraform</span> <span class="n">plan</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>terraform plan
 </pre></div>
 </div>
 <p>Apply the new configuration.</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>terraform apply -var-file=vars/${terraform workspace show}.tfvars
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>terraform apply -var-file<span class="o">=</span>vars/<span class="si">${</span><span class="nv">terraform</span><span class="p"> workspace show</span><span class="si">}</span>.tfvars
 </pre></div>
 </div>
 </div>
 <div class="section" id="termination">
 <h2>Termination<a class="headerlink" href="#termination" title="Permalink to this headline">¶</a></h2>
 <p>To destroy the cluster when finished.</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">terraform</span> <span class="n">destroy</span> <span class="o">-</span><span class="n">auto</span><span class="o">-</span><span class="n">approve</span> <span class="o">-</span><span class="n">force</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>terraform destroy -auto-approve -force
 </pre></div>
 </div>
 </div>
 <div class="section" id="alias">
 <h2>Alias<a class="headerlink" href="#alias" title="Permalink to this headline">¶</a></h2>
 <p>Use the following alias command to all the use of the <code class="docutils literal notranslate"><span class="pre">tf</span></code> command shortname rather than <code class="docutils literal notranslate"><span class="pre">terraform</span></code> command.</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alias</span> <span class="n">tf</span><span class="o">=</span><span class="s1">&#39;terraform&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">alias</span> <span class="nv">tf</span><span class="o">=</span><span class="s1">&#39;terraform&#39;</span>
 </pre></div>
 </div>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tf</span> <span class="n">init</span> <span class="o">-</span><span class="n">upgrade</span>
+<p>For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tf init -upgrade
 </pre></div>
 </div>
 </div>
