@@ -10,7 +10,7 @@ Terraform Edu
 Documentation
 -----------------------
 
-See documentation at: http://terraform-edu.7wmr.uk
+http://terraform-edu.7wmr.uk
 
 
 Build
@@ -21,6 +21,10 @@ Generate the documentation using python-sphinx.
 .. code-block:: bash
 
    $ make html
+
+
+Publish
+~~~~~~~~~~~~~~~~~~~~~~~
 
 Push the documentation html files to gh-pages branch.
 
