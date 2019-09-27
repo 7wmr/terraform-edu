@@ -1,4 +1,4 @@
-docs-build/*
+_build/*
 .terraform/
 terraform.tfstate*
 

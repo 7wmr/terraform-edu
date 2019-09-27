@@ -1,0 +1,41 @@
+/* Overrides for Read the Docs theme */
+.wy-nav-content {
+    max-width: none;
+}
+
+/*
+.wy-side-nav-search {
+    background-color: #22566E;
+}
+.wy-nav-side {
+    color: #0A0A0A;
+    background: #F1F1F1;
+}
+.wy-menu-vertical a {
+    color: #444343;
+}
+.wy-menu-vertical a:hover {
+    background-color: #BFBFBF
+}
+*/
+
+/* Copy buttons */
+button.copybtn {
+    webkit-transition: opacity .3s ease-in-out;
+    -o-transition: opacity .3s ease-in-out;
+    transition: opacity .3s ease-in-out;
+    opacity: 0;
+    padding: 2px 6px;
+    position: absolute;
+    right: 4px;
+    top: 4px;
+  }
+  div.highlight:hover .copybtn, div.highlight .copybtn:focus {
+      opacity: .3;
+  }
+  div.highlight .copybtn:hover {
+      opacity: 1;
+  }
+  div.highlight {
+      position: relative;
+  }
