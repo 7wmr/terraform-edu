@@ -4,13 +4,13 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
-SOURCEDIR     = docs-source
-BUILDDIR      = docs-build
+SOURCEDIR     = docs/src
+BUILDDIR      = docs/_build
 
 # Put it first so that "make" without argument is like "make html".
 html:
 	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
-	@cp -R $(BUILDDIR)/html/ ./docs
+	@cp -R $(BUILDDIR)/html/ ./docs/_
 
 .PHONY: help Makefile
 
