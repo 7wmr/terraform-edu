@@ -1,10 +1,10 @@
 Install
 ==============================
 
-.. code:: bash
+.. code-block:: bash
 
    brew install terraform
 
-.. code:: bash
+.. code-block:: bash
 
    brew install awscli

@@ -158,16 +158,16 @@
   <div class="section" id="instance">
 <h1>Instance<a class="headerlink" href="#instance" title="Permalink to this headline">¶</a></h1>
 <p>Add to the start of any <code class="docutils literal notranslate"><span class="pre">user-data.sh</span></code> template script file to ensure that output is forwarded to console log.</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -xe</span>
-<span class="n">exec</span> <span class="o">&gt;</span> <span class="o">&gt;</span><span class="p">(</span><span class="n">tee</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">user</span><span class="o">-</span><span class="n">data</span><span class="o">.</span><span class="n">log</span><span class="o">|</span><span class="n">logger</span> <span class="o">-</span><span class="n">t</span> <span class="n">user</span><span class="o">-</span><span class="n">data</span> <span class="o">-</span><span class="n">s</span> <span class="mi">2</span><span class="o">&gt;/</span><span class="n">dev</span><span class="o">/</span><span class="n">console</span><span class="p">)</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -xe</span>
+<span class="nb">exec</span> &gt; &gt;<span class="o">(</span>tee /var/log/user-data.log<span class="p">|</span>logger -t user-data -s <span class="m">2</span>&gt;/dev/console<span class="o">)</span> <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
 </pre></div>
 </div>
 <p>View system log output for an instance.</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>echo $(aws ec2 get-console-output --instance-id &quot;${INSTANCE_ID}&quot; | jq &quot;.Output&quot;)
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="k">$(</span>aws ec2 get-console-output --instance-id <span class="s2">&quot;</span><span class="si">${</span><span class="nv">INSTANCE_ID</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">|</span> jq <span class="s2">&quot;.Output&quot;</span><span class="k">)</span>
 </pre></div>
 </div>
 <p>Get a system log screenshot for an instance.</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>echo $(aws ec2 get-console-screenshot --instance-id &quot;${INSTANCE_ID}&quot; | jq &quot;.Output&quot;)
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="k">$(</span>aws ec2 get-console-screenshot --instance-id <span class="s2">&quot;</span><span class="si">${</span><span class="nv">INSTANCE_ID</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">|</span> jq <span class="s2">&quot;.Output&quot;</span><span class="k">)</span>
 </pre></div>
 </div>
 </div>
