@@ -11,6 +11,8 @@ BUILDDIR      = docs/_build
 html:
 	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 	@cp -R $(BUILDDIR)/html/ ./docs/gh-pages
+	@touch ./docs/gh-pages/.nojekyll
+	@echo "terraform-edu.7wmr.uk" > ./docs/gh-pages/CNAME
 
 .PHONY: help Makefile
 
