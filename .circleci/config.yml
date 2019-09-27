@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  test-dev:
+  aws-dev:
     docker:
       - image: hashicorp/terraform
     steps:
@@ -9,17 +9,17 @@ jobs:
           name: Install modules and plugins
           command: |
             terraform init -upgrade
-          working_directory: ~/project/
+          working_directory: ~/project/aws/
       - run:
           name: Run terraform validate
           command: |
             terraform validate
-          working_directory: ~/project/
+          working_directory: ~/project/aws/
       - run: 
           name: Run terraform plan
           command: |
             terraform plan -out /tmp/default.plan 
-          working_directory: ~/project/
+          working_directory: ~/project/aws/
       - store_artifacts:
           path: /tmp/default.plan
 
@@ -27,7 +27,7 @@ workflows:
   version: 2
   init-and-plan:
     jobs:
-      - test-dev:
+      - aws-dev:
           filters:
             branches:
               only: master
