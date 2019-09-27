@@ -10,7 +10,7 @@ windows:
     shell_command:
     - vim
   - shell_command:
-    - cd dev/
+    - cd aws/
     - clear
   - shell_command:
     - cd ../terraform-module-edu/
