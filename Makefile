@@ -7,7 +7,7 @@ SPHINXBUILD   = sphinx-build
 SOURCEDIR     = docs/src
 BUILDDIR      = docs/_build
 
-# Put it first so that "make" without argument is like "make html".
+# Create html documentation in the docs/gh-pages subtree path
 html:
 	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 	@cp -R $(BUILDDIR)/html/ ./docs/gh-pages
@@ -15,7 +15,7 @@ html:
 	@echo "terraform-edu.7wmr.uk" > ./docs/gh-pages/CNAME
 
 # This will push the docs/gh-pages folder to the gh-pages branch
-gh-pages:
+pages:
 	@git subtree push --prefix docs/gh-pages origin gh-pages
 
 
