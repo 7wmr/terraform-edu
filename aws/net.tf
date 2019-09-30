@@ -1,3 +1,7 @@
+data "aws_availability_zones" "available" {
+  state = "available"
+}
+
 resource "aws_vpc" "main" {
   cidr_block           = "10.0.0.0/16"
   instance_tenancy     = "default"
@@ -21,9 +25,10 @@ resource "aws_subnet" "public" {
 }
 
 resource "aws_subnet" "private_primary" {
-  vpc_id = "${aws_vpc.main.id}"
-  cidr_block = "10.0.2.0/24"
+  vpc_id                  = "${aws_vpc.main.id}"
+  cidr_block              = "10.0.2.0/24"
   map_public_ip_on_launch = false
+  availability_zone       = "${data.aws_availability_zones.available.names[0]}"
 
   tags = {
     Name = "${terraform.workspace}-private-primary-subnet"
@@ -31,9 +36,10 @@ resource "aws_subnet" "private_primary" {
 }
 
 resource "aws_subnet" "private_secondary" {
-  vpc_id = "${aws_vpc.main.id}"
-  cidr_block = "10.0.3.0/24"
+  vpc_id                  = "${aws_vpc.main.id}"
+  cidr_block              = "10.0.3.0/24"
   map_public_ip_on_launch = false
+  availability_zone       = "${data.aws_availability_zones.available.names[1]}"
 
   tags = {
     Name = "${terraform.workspace}-private-secondary-subnet"
