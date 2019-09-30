@@ -17,7 +17,7 @@ module "msg_rabbitmq" {
   environment = "${terraform.workspace}"
 
   vpc_id      = "${aws_vpc.main.id}"
-  subnet_id   = "${aws_subnet.private.id}"
+  subnet_id   = "${aws_subnet.private_primary.id}"
 
   key_name    = var.key_name
   ssh_enabled = false
@@ -29,12 +29,18 @@ module "dbs_mysql" {
   source      = "git@github.com:7wmr/terraform-module-edu.git//dbs/mysql?ref=master"
   environment = "${terraform.workspace}"
 
-  dbs         = var.mysql
+  vpc_id              = "${aws_vpc.main.id}"
+  subnet_group_name   = "${aws_db_subnet_group.main.name}"
+
+  dbs                 = var.mysql
 }
 
 module "svc_web" {
   source               = "git@github.com:7wmr/terraform-module-edu.git//svc/web?ref=master"  
   environment          = "${terraform.workspace}"
+
+  vpc_id               = "${aws_vpc.main.id}"
+  subnet_id            = "${aws_subnet.public.id}"
 
   key_name             = var.key_name
   ssh_enabled          = false
@@ -50,6 +56,9 @@ module "svc_web" {
 module "svc_run" {
   source               = "git@github.com:7wmr/terraform-module-edu.git//svc/run?ref=master"
   environment          = "${terraform.workspace}"
+
+  vpc_id               = "${aws_vpc.main.id}"
+  subnet_id            = "${aws_subnet.private_primary.id}"
 
   key_name             = var.key_name
   ssh_enabled          = true
