@@ -15,7 +15,10 @@ terraform {
 module "msg_rabbitmq" {
   source      = "git@github.com:7wmr/terraform-module-edu.git//msg/rabbitmq?ref=master"
   environment = "${terraform.workspace}"
-    
+
+  vpc_id      = "${aws_vpc.main.id}"
+  subnet_id   = "${aws_subnet.private.id}"
+
   key_name    = var.key_name
   ssh_enabled = false
 
