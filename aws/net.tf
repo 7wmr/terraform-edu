@@ -14,41 +14,41 @@ resource "aws_vpc" "main" {
   }
 }
 
-resource "aws_subnet" "public" {
+resource "aws_subnet" "public_1" {
   vpc_id                  = "${aws_vpc.main.id}"
   cidr_block              = "10.0.1.0/24"
   map_public_ip_on_launch = true
   
   tags = {
-    Name = "${terraform.workspace}-public-subnet"
+    Name = "${terraform.workspace}-public-1-subnet"
   }
 }
 
-resource "aws_subnet" "private_primary" {
+resource "aws_subnet" "private_1" {
   vpc_id                  = "${aws_vpc.main.id}"
   cidr_block              = "10.0.2.0/24"
   map_public_ip_on_launch = false
   availability_zone       = "${data.aws_availability_zones.available.names[0]}"
 
   tags = {
-    Name = "${terraform.workspace}-private-primary-subnet"
+    Name = "${terraform.workspace}-private-1-subnet"
   }
 }
 
-resource "aws_subnet" "private_secondary" {
+resource "aws_subnet" "private_2" {
   vpc_id                  = "${aws_vpc.main.id}"
   cidr_block              = "10.0.3.0/24"
   map_public_ip_on_launch = false
   availability_zone       = "${data.aws_availability_zones.available.names[1]}"
 
   tags = {
-    Name = "${terraform.workspace}-private-secondary-subnet"
+    Name = "${terraform.workspace}-private-2-subnet"
   }
 }
 
 resource "aws_db_subnet_group" "main" {
   name       = "${terraform.workspace}-dbs-subnet-group"
-  subnet_ids = ["${aws_subnet.private_primary.id}", "${aws_subnet.private_secondary.id}"]
+  subnet_ids = ["${aws_subnet.private_1.id}", "${aws_subnet.private_2.id}"]
 
   tags = {
     Name = "${terraform.workspace}-dbs-subnet-group"
@@ -63,32 +63,32 @@ resource "aws_internet_gateway" "main" {
   }
 }
 
-resource "aws_route_table" "internet" {
+resource "aws_route_table" "main" {
   vpc_id = "${aws_vpc.main.id}"
   
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block = "10.0.0.0/16"
     gateway_id = "${aws_internet_gateway.main.id}"
   }
 
   tags = {
-    Name = "${terraform.workspace}-internet-route-table"
+    Name = "${terraform.workspace}-main-route-table"
   }
 }
 
-resource "aws_route_table_association" "public_internet" {
-  subnet_id      = "${aws_subnet.public.id}"
-  route_table_id = "${aws_route_table.internet.id}"
+resource "aws_route_table_association" "public_1" {
+  subnet_id      = "${aws_subnet.public_1.id}"
+  route_table_id = "${aws_route_table.main.id}"
 }
 
-resource "aws_route_table_association" "private_primary_internet" {
-  subnet_id      = "${aws_subnet.private_primary.id}"
-  route_table_id = "${aws_route_table.internet.id}"
+resource "aws_route_table_association" "private_1" {
+  subnet_id      = "${aws_subnet.private_1.id}"
+  route_table_id = "${aws_route_table.main.id}"
 }
 
-resource "aws_route_table_association" "private_secondary_internet" {
-  subnet_id      = "${aws_subnet.private_secondary.id}"
-  route_table_id = "${aws_route_table.internet.id}"
+resource "aws_route_table_association" "private_2" {
+  subnet_id      = "${aws_subnet.private_2.id}"
+  route_table_id = "${aws_route_table.main.id}"
 }
 
 

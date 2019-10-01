@@ -17,7 +17,7 @@ module "msg_rabbitmq" {
   environment = "${terraform.workspace}"
 
   vpc_id      = "${aws_vpc.main.id}"
-  subnet_id   = "${aws_subnet.private_primary.id}"
+  subnet_id   = "${aws_subnet.private_1.id}"
 
   key_name    = var.key_name
   ssh_enabled = false
@@ -40,7 +40,7 @@ module "svc_web" {
   environment          = "${terraform.workspace}"
 
   vpc_id               = "${aws_vpc.main.id}"
-  subnet_id            = "${aws_subnet.public.id}"
+  subnet_id            = "${aws_subnet.public_1.id}"
 
   key_name             = var.key_name
   ssh_enabled          = false
@@ -58,7 +58,7 @@ module "svc_run" {
   environment          = "${terraform.workspace}"
 
   vpc_id               = "${aws_vpc.main.id}"
-  subnet_id            = "${aws_subnet.private_primary.id}"
+  subnet_id            = "${aws_subnet.private_1.id}"
 
   key_name             = var.key_name
   ssh_enabled          = true
