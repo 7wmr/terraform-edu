@@ -35,7 +35,7 @@ variable "web_asg" {
   default      = {
     min_size   = 2
     max_size   = 10
-    enabled    = false
+    enabled    = true
   }
 }
 

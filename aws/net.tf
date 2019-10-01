@@ -55,7 +55,6 @@ resource "aws_db_subnet_group" "main" {
   }
 }
 
-
 resource "aws_internet_gateway" "main" {
   vpc_id = "${aws_vpc.main.id}"
 
@@ -64,7 +63,7 @@ resource "aws_internet_gateway" "main" {
   }
 }
 
-resource "aws_route_table" "main" {
+resource "aws_route_table" "internet" {
   vpc_id = "${aws_vpc.main.id}"
   
   route {
@@ -73,12 +72,23 @@ resource "aws_route_table" "main" {
   }
 
   tags = {
-    Name = "${terraform.workspace}-route-table"
+    Name = "${terraform.workspace}-internet-route-table"
   }
 }
 
-resource "aws_route_table_association" "main" {
+resource "aws_route_table_association" "public_internet" {
   subnet_id      = "${aws_subnet.public.id}"
-  route_table_id = "${aws_route_table.main.id}"
+  route_table_id = "${aws_route_table.internet.id}"
 }
+
+resource "aws_route_table_association" "private_primary_internet" {
+  subnet_id      = "${aws_subnet.private_primary.id}"
+  route_table_id = "${aws_route_table.internet.id}"
+}
+
+resource "aws_route_table_association" "private_secondary_internet" {
+  subnet_id      = "${aws_subnet.private_secondary.id}"
+  route_table_id = "${aws_route_table.internet.id}"
+}
+
 
