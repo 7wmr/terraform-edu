@@ -43,7 +43,7 @@ module "svc_web" {
   subnet_id            = "${aws_subnet.public_1.id}"
 
   key_name             = var.key_name
-  ssh_enabled          = false
+  ssh_enabled          = true
 
   rabbitmq_endpoint    = "${module.msg_rabbitmq.endpoint}"
   rabbitmq_credentials = "${var.rabbitmq.username}:${var.rabbitmq.password}"

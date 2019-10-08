@@ -7,7 +7,7 @@ variable "aws_region" {
 variable "key_name" {
   type        = string
   description = "SSH key name"
-  default     = "ipsoft-macbook"
+  default     = "contino-macbook"
 }
 
 variable "web_app" {
@@ -43,7 +43,7 @@ variable "run_app" {
   type        = any 
   description = "Run application configuration"
   default     = {
-    release   = "v1.2.1"
+    release   = "v1.2.2"
     name      = "run"
   }
 }
