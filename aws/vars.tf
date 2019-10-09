@@ -35,7 +35,7 @@ variable "web_asg" {
   default      = {
     min_size   = 2
     max_size   = 10
-    enabled    = true
+    enabled    = false # This has a bug that needs to be fixed. There is an inconsistant plan error.
   }
 }
 
