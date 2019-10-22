@@ -42,8 +42,8 @@ module "svc_web" {
   environment          = "${terraform.workspace}"
 
   vpc_id               = "${aws_vpc.main.id}"
-  subnet_id            = "${aws_subnet.public_1.id}"
-
+  subnet_ids           = ["${aws_subnet.public_1.id}", "${aws_subnet.public_2.id}"]
+  
   key_name             = var.key_name
   ssh_enabled          = true
 
